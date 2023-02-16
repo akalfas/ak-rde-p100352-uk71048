@@ -14,14 +14,14 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
       - name: remote add
-      - run: |
+        run: |
           git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
       - name: log head
-      - run: |
+        run: |
           git log -1 --format='%H'
       - name: pull from cm
-      - run: |
+        run: |
           git pull cm main
       - name: push to cm
-      - run: |
+        run: |
           git push cm main
