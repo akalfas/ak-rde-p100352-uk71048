@@ -24,7 +24,7 @@ jobs:
           git log -1 --format='%H'
       - name: pull from cm
         run: |
-          git pull -r cm main
+          git pull cm main
       - name: push to cm
         run: |
           git push cm main
