@@ -14,8 +14,11 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
       - name: Sync
-        run: |
-          git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
+        - run: |
+            git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
+        - run: |
           git pull cm main
+        - run: |
           git log -1 --format='%H'
+        - run: |
           git push cm main
