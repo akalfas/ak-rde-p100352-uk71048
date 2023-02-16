@@ -36,5 +36,5 @@ jobs:
       - name: Sync
         run: |
           git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
-          git pull cm main --ff-only
+          git pull cm main -r
           git push cm main
