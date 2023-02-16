@@ -26,3 +26,7 @@ jobs:
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
           mvn -X -B release:prepare release:perform
+      - name: Sync
+        run: |
+          git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
+          git push cm main
