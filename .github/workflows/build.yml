@@ -1,9 +1,9 @@
-name: Sync
+name: Build
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Build"]
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   build:
