@@ -1,9 +1,9 @@
-name: Build
+name: Sync
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 * * * *'
+  workflow_run:
+    workflows: ["Build"]
 
 jobs:
   build:
@@ -25,16 +25,3 @@ jobs:
           git config --global url."https://github.com/".insteadOf git@github.com:
           git config --global url."https://".insteadOf git://
           mvn -B release:prepare release:perform
-  sync:
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, 'maven-scm') }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GH_PAT }}
-      - name: Sync
-        run: |
-          git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
-          git pull cm main -r
-          git push cm main
