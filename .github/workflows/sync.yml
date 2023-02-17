@@ -13,21 +13,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.GH_PAT }}
-      - name: remote rename
+      - name: sync
         run: |
           git remote rename origin upstream
-      - name: remote add
-        run: |
           git remote add origin https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
-      - name: fetch gh
-        run: |
           git fetch upstream
-      - name: checkout main
-        run: |
           git checkout main
-      - name: try merge
-        run: |
           git merge upstream/main
-      - name: try push
-        run: |
           git push origin main
