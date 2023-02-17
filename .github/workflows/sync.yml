@@ -21,4 +21,6 @@ jobs:
           git checkout cm/main
           git switch -c main-cm
           git log -10 --pretty=oneline --abbrev-commit
+          git checkout main
+          git log -10 --pretty=oneline --abbrev-commit
           
