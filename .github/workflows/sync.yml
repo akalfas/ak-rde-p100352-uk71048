@@ -23,5 +23,5 @@ jobs:
           git merge upstream/main
           git merge origin/main --allow-unrelated-histories
           git config --global user.email "github-actions@github.com"
-          git config --global user.name "github-actions"
+          git config --global user.name "akalfas-adobe-com"
           git push origin main
