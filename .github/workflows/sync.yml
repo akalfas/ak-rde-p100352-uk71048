@@ -17,11 +17,9 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git remote rename origin upstream
-          git remote add origin https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
-          git fetch upstream
-          git fetch origin
+          git remote rename origin gh
+          git remote add cm https://akalfas-adobe-com:${{ secrets.CM_PAT }}@git.cloudmanager.adobe.com/cmteam/ak-rde-p100352-uk71048/
+          git fetch gh
           git checkout main
-          git merge upstream/main
-          git merge origin/main --allow-unrelated-histories
-          git push origin main
+          git merge gh/main
+          git push cm main
