@@ -20,5 +20,6 @@ jobs:
           git fetch cm
           git checkout cm/main
           git merge main --allow-unrelated-histories
+          git merge --continue
           git push cm main
           
