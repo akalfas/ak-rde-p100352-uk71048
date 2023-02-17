@@ -20,6 +20,5 @@ jobs:
           git fetch cm
           git checkout cm/main
           git switch -c main-cm
-          git merge main --allow-unrelated-histories
-          git push cm main-cm
+          git log -10 --pretty=oneline --abbrev-commit
           
