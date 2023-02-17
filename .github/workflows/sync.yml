@@ -20,7 +20,11 @@ jobs:
           git fetch cm
           git checkout cm/main
           git switch -c main-cm
+      - name: debug 1
+        run: |
           git log -10 --pretty=oneline --abbrev-commit
+      - name: debug 2
+        run: |
           git checkout main
           git log -10 --pretty=oneline --abbrev-commit
           
