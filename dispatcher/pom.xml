@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.akrde</groupId>
         <artifactId>aem-akrde-project</artifactId>
-        <version>0.0.335-SNAPSHOT</version>
+        <version>0.0.335</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
