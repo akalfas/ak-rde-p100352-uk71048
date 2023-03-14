@@ -65,6 +65,7 @@
         <uber.jar.version>6.5.13</uber.jar.version>
         <wknd-shared.version>2.1.2</wknd-shared.version>
         <aemanalyser.version>1.4.10</aemanalyser.version>
+		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
     </properties>
 
     <organization>
@@ -90,6 +91,26 @@
 
     <build>
         <plugins>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<scmCommentPrefix>[ci skip]</scmCommentPrefix>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
+			<!-- Maven Release Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<scmCommentPrefix>[maven-scm] :</scmCommentPrefix>
+					<preparationGoals>clean install</preparationGoals>
+					<goals>install</goals>
+					<releaseProfiles>release</releaseProfiles>
+				</configuration>
+			</plugin>
             <!-- Maven Source Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
