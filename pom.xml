@@ -90,26 +90,6 @@
 
     <build>
         <plugins>
-            <!-- Maven Release Plugin -->
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <scmCommentPrefix>[maven-scm] :</scmCommentPrefix>
-                    <preparationGoals>clean install</preparationGoals>
-                    <goals>deploy</goals>
-                    <releaseProfiles>release</releaseProfiles>
-                    <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <projectVersionPolicyId>OddEvenVersionPolicy</projectVersionPolicyId>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.release</groupId>
-                        <artifactId>maven-release-oddeven-policy</artifactId>
-                        <version>3.0.0-M5</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
             <!-- Maven Source Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
