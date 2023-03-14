@@ -1,9 +1,9 @@
-name: Build
+name: Release
 
 on:
-  push:
-    branches:
-      - main
+  label:
+    types:
+      - release
 
 jobs:
   build:
@@ -18,4 +18,8 @@ jobs:
           cache: 'maven'
       - name: Build with Maven
         run: |
-          mvn clean install
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config --global url."https://github.com/".insteadOf git@github.com:
+          git config --global url."https://".insteadOf git://
+          mvn -B release:prepare release:perform
