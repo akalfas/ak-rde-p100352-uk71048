@@ -12,11 +12,17 @@ jobs:
     if: ${{ !contains(github.event.head_commit.message, 'maven-scm') }}
     steps:
       - uses: actions/checkout@v3
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('cache.version') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
-          cache: 'maven'
       - name: Build with Maven
         run: |
           time -p sh -c 'mvn --batch-mode org.apache.maven.plugins:maven-dependency-plugin:3.1.2:resolve-plugins && mvn --batch-mode de.qaware.maven:go-offline-maven-plugin:1.2.6:resolve-dependencies && mvn --batch-mode org.apache.maven.plugins:maven-clean-plugin:3.1.0:clean -Dmaven.clean.failOnError=false && mvn --batch-mode org.jacoco:jacoco-maven-plugin:prepare-agent package'
