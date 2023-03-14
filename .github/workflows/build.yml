@@ -18,4 +18,8 @@ jobs:
           cache: 'maven'
       - name: Build with Maven
         run: |
-          mvn clean install
+          mvn --batch-mode org.apache.maven.plugins:maven-dependency-plugin:3.1.2:resolve-plugins
+          mvn --batch-mode de.qaware.maven:go-offline-maven-plugin:1.2.6:resolve-dependencies
+          mvn --batch-mode org.apache.maven.plugins:maven-clean-plugin:3.1.0:clean -Dmaven.clean.failOnError=false
+          mvn --batch-mode org.jacoco:jacoco-maven-plugin:prepare-agent package
+
