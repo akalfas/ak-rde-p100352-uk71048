@@ -17,11 +17,25 @@ jobs:
         with:
           path: |
             ~/.m2/repository
-            $GITHUB_WORKSPACE/ui.frontend/node
-            $GITHUB_WORKSPACE/ui.frontend/node_modules
-          key: ${{ runner.os }}-aem-${{ hashFiles('cache.version') }}
+          key: ${{ runner.os }}-maven-${{ hashFiles('cache.version') }}
           restore-keys: |
-            ${{ runner.os }}-aem-
+            ${{ runner.os }}-maven-
+      - name: Cache local node repository
+        uses: actions/cache@v3
+        with:
+          path: |
+            $GITHUB_WORKSPACE/ui.frontend/node
+          key: ${{ runner.os }}-node-${{ hashFiles('cache.version') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Cache local node_modules repository
+        uses: actions/cache@v3
+        with:
+          path: |
+            $GITHUB_WORKSPACE/ui.frontend/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('cache.version') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
